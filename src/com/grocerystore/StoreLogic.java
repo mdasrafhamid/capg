@@ -32,12 +32,12 @@ public class StoreLogic {
 	
 	private int inputChoice(int min, int max){
 		
-		
+		String c;
 		int choice;
 		
 		try {
 			if(sc.hasNextInt()) {
-				String c = sc.nextLine();
+				c = sc.nextLine();
 				choice = Integer.parseInt(c);
 				
 				if(choice>=min && choice<=max)
@@ -46,7 +46,7 @@ public class StoreLogic {
 					throw new InvalidInputException("Choice out of range!");
 			}
 			else {
-				String c = sc.nextLine();
+				c = sc.nextLine();
 				throw new InvalidInputException("Choice not an integer!");
 			}
 		} catch (InvalidInputException e) {
@@ -147,6 +147,7 @@ public class StoreLogic {
 		List<Item> bList = b.getList();
 		int size = bList.size();
 
+		//putting items from basket to store
 		for (int i = 0; i < size; i++) {
 			Item tempItem = bList.remove(0);
 			Item storeItem = getItemByName(tempItem.getName());
@@ -160,7 +161,6 @@ public class StoreLogic {
 
 	private Item getItemByName(String s) {
 
-		System.out.println("clearing item " + s);
 		for (Item item : Item.getList()) {
 			if (item.getName().equals(s))
 				return item;
